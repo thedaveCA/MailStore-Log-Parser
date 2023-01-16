@@ -1,1 +1,1 @@
-# MSLogParser
+# MailStore log parser
