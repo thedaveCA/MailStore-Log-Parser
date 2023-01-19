@@ -28,7 +28,7 @@ modification | notes
 
 All of the modify commands can perform multiple modifications at once.
 
-See the full [modify documentation] (command_modify.md).
+See the full [modify documentation](command_modify.md).
 
 ### filter
 
@@ -39,7 +39,7 @@ filter | notes
 exceptions | Find all exceptions.
 uniqueexceptions | Find all unique exceptions.
 
-See the full [filter documentation] (command_filter.md).
+See the full [filter documentation](command_filter.md).
 
 ### report
 
@@ -47,12 +47,12 @@ See the full [filter documentation] (command_filter.md).
 
 Parse a MailStore log file containing `ServerUnmappableException` exceptions and return a deduplicated list of e-mail addresses to assist with importing journal mailboxes or dumps from other archiving products into MailStore.
 
-See the full [documentation] (command_report.md).
+See the full [documentation](command_report.md).
 
 ## Contact
 
 Open an [issue](https://github.com/thedaveCA/MailStore-Log-Parser/issues) or [discussion](https://github.com/thedaveCA/MailStore-Log-Parser/discussions) on GitHub, or [mslogparser@thedave.dev](mailto:mslogparser@thedave.dev) or see [thedave.dev](https://thedave.dev/) for other places you can reach me.
 
-
 ## License
-TBD
+
+[GNU GPLv3](/LICENSE)
