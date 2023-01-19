@@ -34,12 +34,12 @@ See the full [modify documentation](command_modify.md).
 
 Parse a logfile and return a limited set of information.
 
-filter | notes
---- | ---
-exceptions | Find all exceptions.
-uniqueexceptions | Find all unique exceptions.
+| Feature | Notes |
+| --- | --- |
+exceptions | List exceptions.
+uniqueexceptions | List all unique exceptions.
 
-See the full [filter documentation](command_filter.md).
+These are very basic proof-of-concept, *exceptions* will print all exceptions, while *uniqueexceptions* will list the first instance of each exception but skip duplicates. I'll be extending these as needed, in particular to cover cases where you need to work with a multi-GB logfile that contains misc daily operation entries intermixed with an Index Rebuild.
 
 ### report
 
