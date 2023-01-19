@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
+using Humanizer;
 
 namespace MailStoreLogFeatures;
 
@@ -25,6 +27,13 @@ public static partial class TextTools
                 "INFO: Processing messages in folder",
                 "INFO: Notify:WriteLine 'Current folder is",
                 "INFO: Notify:SetCurrentFolder",
+                "INFO:     Source Mailbox Name:",
+                "INFO:     Target User Name:",
+                "INFO: Authenticating user ",
+                "INFO: POP3 command sent: USER ",
+                "INFO:     Source Mailbox Name:             example. User",
+                "INFO:     Target User Name:                example.user@example.com",
+
                 "MailStore.Common.Interfaces.ServerUnmappableException: MailStore is unable to determine where to store this email. Please ensure that e-mail addresses are specified in the users' settings. Senders and recipients:"
             };
         // _regexPatternList requires a key, and an optional value. The key will be used to
@@ -33,7 +42,13 @@ public static partial class TextTools
         // NOTE: Maximum one hit per line from each type
         _regexPatternList = new() {
                 {"INFO: Processing message: [/0-9]{10} [:0-9]{8} UTC '.*', UID","'.*'" },
-                { "License ID:          [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}","[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" }
+                { "License ID:          [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}","[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" },
+            {@"Creating authentication session for user .* \(.*"," [^ ]+@[^ ]+ " },
+            {@"INFO: User [^ ]+@[^ ]+ \(.*\) logged in successfully.",@"[^ ]+@[^ ]+ \(.*\)" },
+            {"INFO: Searching folder [^ ]+@[^ ]+ in archive store 39..."," [^ ]+@[^ ]+ " },
+            {"INFO: EWS Settings: MailboxEmailAddress=[^ ]+@[^ ]+, ", "=[^ ]+@[^ ]+," },
+            {"INFO: Trying to find an entry in the mailbox cache. Key: EwsMailbox.*",@"\$[^\$]+\$[^@]+@[^\$]+\$" },
+            {"INFO: Notify:SetTitle '.*@.* <.*@.*>'","'.*'" }
             };
     }
     #endregion Public Constructors

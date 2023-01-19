@@ -9,7 +9,7 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AnalysisLevel>6.0</AnalysisLevel>
 	  <Deterministic>False</Deterministic>
-	  <VersionPrefix>0.1.0</VersionPrefix>
+	  <VersionPrefix>0.1.1</VersionPrefix>
 	  <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmmss))</VersionSuffix>
   </PropertyGroup>
 
