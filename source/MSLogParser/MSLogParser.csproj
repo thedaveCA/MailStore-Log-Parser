@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TheView\TheView\TheView.csproj" />
+    <ProjectReference Include="..\TheView\TheView.csproj" />
   </ItemGroup>
 
 </Project>
