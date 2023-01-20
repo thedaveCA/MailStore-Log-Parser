@@ -45,19 +45,24 @@ internal static partial class LogFilterHelpers
         bool WriteLines = false;
         string Line;
         HashSet<string> ExceptionHashList = new();
-        const string RegexPattern = "^([\\.:|0-9]{12})";
+        // RegEx matches the timestamp, plus [thread] number
+//        const string RegexPattern = "^([\\.:|0-9]{12}) +\\[[0-9]+\\] ";
+        const string RegexPattern = @"^([\.:|0-9]{12})\s+\[[0-9]+\]\s+";
         _ = TextWriterWrite;
         while (streamReader.Peek() != -1) {
             Line = (streamReader.ReadLine() ?? string.Empty);
             Match RegexMatch = Regex.Match(Line, RegexPattern);
+            // If this line has a timestamp, stop writing lines (otherwise it might be allowed through as exceptions can be multi-line)
             if (RegexMatch.Success) {
                 WriteLines = false;
             }
-
+            // If this line is an exception, check if it is new
             if (Line.Contains("EXCEPTION")) {
-                WriteLines = ExceptionHashList.Add(Line.Substring(RegexMatch.Index));
+                // Add to the hashlist, if it is new then we need to start writing here
+                WriteLines = ExceptionHashList.Add(Line.Substring(RegexMatch.Length));
             }
 
+            // Write the text based on the decision above. 
             if (WriteLines) {
                 TextWriterWriteLine(Line);
             }

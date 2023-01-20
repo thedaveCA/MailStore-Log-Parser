@@ -10,7 +10,7 @@
     <AnalysisLevel>6.0</AnalysisLevel>
 	  <Deterministic>False</Deterministic>
 	  <VersionPrefix>0.1.1</VersionPrefix>
-	  <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmmss))</VersionSuffix>
+	  <VersionSuffix>$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))-pre</VersionSuffix>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,7 +24,7 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <PublishReadyToRun>false</PublishReadyToRun>
     <SelfContained>False</SelfContained>
-	  <VersionSuffix>$([System.DateTime]::UtcNow.ToString(yyyyMMdd))</VersionSuffix>
+	  <VersionSuffix>$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TheView\TheView.csproj" />
+    <ProjectReference Include="..\..\TheView\TheView\TheView.csproj" />
   </ItemGroup>
 
 </Project>

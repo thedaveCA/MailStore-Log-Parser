@@ -16,7 +16,7 @@ public static partial class LogModification
             {TextModifications.privacy, "Remove (some) potentially personal/private information."},
             {TextModifications.linenumbers,"Add line numbers to each (significant) line."},
             {TextModifications.maketimesrelative,"Timestamp from the start of execution, and individual line timing." },
-            {TextModifications.uniqueexceptions,"" },
+            //{TextModifications.uniqueexceptions,"" },
         };
     }
     #endregion Public Constructors
@@ -30,7 +30,7 @@ public static partial class LogModification
         privacy = 1 << 1,
         maketimesrelative = 1 << 2,
         linenumbers = 1 << 3,
-        uniqueexceptions = 1 << 4,
+        //uniqueexceptions = 1 << 4,
     }
     #endregion Enums
 
@@ -67,7 +67,6 @@ public static partial class LogModification
             internalOutputString = new(sb: internalStringBuilder);
             TestTextModification(internalStreamReader, internalOutputString);
         } else {
-            Console.WriteLine("+++" + Modifications);
             // Loop through each of the enums and take action
             foreach (TextModifications value in Enum.GetValues(typeof(TextModifications))) {
                 // None gets called every time, but we don't want to set up new objects. Otherwise,
@@ -82,7 +81,6 @@ public static partial class LogModification
 
                     // Switch through the possibilities -- NOTE order is controlled by the enums,
                     // not the switch statements
-                    Console.WriteLine(value);
                     switch (value) {
                         case TextModifications.privacy:
                             Modifications &= ~TextModifications.privacy;
@@ -96,10 +94,10 @@ public static partial class LogModification
                             Modifications &= ~TextModifications.maketimesrelative;
                             MakeTimesRelative(internalStreamReader, internalOutputString);
                             break;
-                        case TextModifications.uniqueexceptions:
-                            Modifications &= ~TextModifications.uniqueexceptions;
-                            LogFilterHelpers.FindUniqueExceptions(internalStreamReader, internalOutputString);
-                            break;
+                        //case TextModifications.uniqueexceptions:
+                        //    Modifications &= ~TextModifications.uniqueexceptions;
+                        //    LogFilterHelpers.FindUniqueExceptions(internalStreamReader, internalOutputString);
+                        //    break;
                         default:
                             // flags that are not implemented can be in the enum, but they can't
                             // actually be called

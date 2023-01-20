@@ -76,7 +76,7 @@ internal static class System_CommandLine
             DynamicCommand.AddOption(console);
             DynamicCommand.AddOption(interactive);
             foreach (TextModifications EachDynamicOption in Enum.GetValues(typeof(TextModifications))) {
-                if (EachDynamicOption== TextModifications.uniqueexceptions || EachDynamicOption == TextModifications.None || EachDynamicCommand == EachDynamicOption) {
+                if (EachDynamicOption== TextModifications.None || EachDynamicCommand == EachDynamicOption) {
                     continue;
                 }
 
